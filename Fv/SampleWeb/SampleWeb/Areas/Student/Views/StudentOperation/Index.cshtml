@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div id="content-wrapper">
+
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Student</a>
+            </li>
+            <li class="breadcrumb-item active">List</li>
+        </ol>        
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Student List
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="studentDataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>                           
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>
+        
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Student List
+                </div>
+                <div class="card-body">
+                    <h2>No Student Found!</h2>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>       
+
+    </div>
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © Your Website 2019</span>
+            </div>
+        </div>
+    </footer>
+
+
+</div>
+
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/Student/StudentOperation/DeleteStudent" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you want to delete this record?</p>
+                    <input type="hidden" id="modalId" name="id" value="" />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Yes, Delete!</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/vendor/jquery/jquery.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+
+<script>
+
+    $(function () {
+
+        $('#studentDataTable').DataTable({
+
+            "processing": true,
+            "serverSide": true,
+            //"ajax": "/Student/StudentOperation/GetStudent",
+
+            ajax: {
+                    "url": "/Student/StudentOperation/GetStudent",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+          
+            columns: [
+
+                { "data.data": "Id", "autoWidth": false, "searchable": true },
+                { "data.data": "StudentName", "autoWidth": false, "searchable": true },
+                { "data.data": "Age", "autoWidth": false, "searchable": true },
+
+                //{ "data.data": null, "<a id='btnEdit' class='btn btn-success btn-dt'><i class='fa fa-edit'></i></a><a href='#' id='btnDelete' class='btn btn-danger btn-dt'><i class='fa fa-trash-o'></i></a>"  "searchable": true }
+
+
+                {
+                 render: function (data, type, row) {
+                        
+                        return "<a id='btnEdit' class='btn btn-success btn-dt'><i class='fa fa-edit'></i></a><a id='btnDelete' class='btn btn-danger btn-dt'><i class='fa fa-trash'></i></a>"
+                    },
+                   
+                }
+              ],
+
+
+    //        "columndefs": [
+				//	 {
+    //             render: function (data, type, row) {
+                        
+    //                    return "<a class='btn btn-success btn-dt' href='/student/studentoperation/editstudent/" + data + "'><i class='fa fa-edit'></i></a><a href='#' id='btndelete' class='btn btn-danger btn-dt'><i class='fa fa-trash-o'></i></a>"; 
+    //                },
+    //                targets: 3
+    //            }
+				//]
+
+        });
+
+         $('#studentDataTable tbody').on('click', '#btnEdit', function () {
+        debugger;
+        var currentRow = $(this).closest("tr");
+        var studentId = currentRow.find('td:eq(0)').text();
+        //alert(studentId);
+        var data = $('#studentDataTable').DataTable().row(currentRow).data();
+        console.log(data);
+
+             EditStudent(studentId);
+
+        });
+
+        function EditStudent(id) {
+            debugger;
+             var link = '@Url.Action("EditStudent", "StudentOperation", new { id = "replace" })';
+             link = link.replace("replace", id);
+             window.location.href = link;          
+
+        }
+
+        $('#studentDataTable tbody').on('click', '#btnDelete', function () {
+        debugger;
+        var currentRow = $(this).closest("tr");
+        var studentId = currentRow.find('td:eq(0)').text();
+        //alert(studentId);
+        var data = $('#studentDataTable').DataTable().row(currentRow).data();
+        console.log(data);
+
+        DeleteStudent(studentId);
+
+        });
+
+        function DeleteStudent(id) {
+            debugger;
+            $("#modalId").val(id);
+            $(".modal").show();
+        }
+
+    });
+
+</script>
+

@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{0D8FC5E9-4DDA-4B01-A980-676F953C3FA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VivaTest.Web", "VivaTest.Web\VivaTest.Web.csproj", "{15EBC29C-DCB9-40EF-8C31-D7F809606462}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15EBC29C-DCB9-40EF-8C31-D7F809606462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15EBC29C-DCB9-40EF-8C31-D7F809606462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15EBC29C-DCB9-40EF-8C31-D7F809606462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15EBC29C-DCB9-40EF-8C31-D7F809606462}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15EBC29C-DCB9-40EF-8C31-D7F809606462} = {0D8FC5E9-4DDA-4B01-A980-676F953C3FA1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5192C55-5657-4070-A6FF-6452A19E539F}
+	EndGlobalSection
+EndGlobal

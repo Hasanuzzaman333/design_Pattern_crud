@@ -1,0 +1,74 @@
+﻿@model List<SampleWeb.Areas.Auth.ViewModels.UserRoleViewModel>
+@{
+    ViewData["Title"] = "EditUserInRole";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Role</a>
+                </li>
+                <li class="breadcrumb-item active">Overview</li>
+            </ol>
+            @if (Model.Any())
+            {
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        Adding/Removing User To The Role: @ViewBag.RoleName
+                    </div>
+                    <form method="post">
+                        <div class="card-body">
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                            <div class="form-check m-1">
+                                <input type="hidden" asp-for="@Model[i].UserId" />
+                                <input type="hidden" asp-for="@Model[i].UserName" />                                
+                                <input asp-for="@Model[i].IsSelected" class="form-check-input" />
+                                <label class="form-check-label" asp-for="@Model[i].IsSelected">
+                                    @Model[i].UserName
+                                </label>
+                            </div>
+                            }
+                            <div class="card-footer">
+                                <input type="submit" value="Update" class="btn btn-primary"
+                                       style="width:auto" />
+                                @*<a asp-action="EditRole" asp-route-id="@roleId"
+                                class="btn btn-primary" style="width:auto">Cancel</a>*@
+                            </div>
+                        </div>
+                    </form>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+            }
+            else
+            {
+
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        User List
+                    </div>
+                    <div class="card-body">
+                        <h2>No User Found!</h2>
+                    </div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+
+            }
+
+        </div>
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © Your Website 2019</span>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+
