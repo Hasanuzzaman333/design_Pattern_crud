@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +39,17 @@ namespace VivaTest.Web
             services.AddDbContext<VivaContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("DbConnection"))
             );
-            
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<VivaContext>();
+            services.Configure<IdentityOptions>(option =>
+            {
+                option.Password.RequiredLength = 4;
+                option.Password.RequiredUniqueChars = 0;
+                option.Password.RequireUppercase = false;
+                option.Password.RequireNonAlphanumeric = false;
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddTransient(typeof(IStudentRepository), typeof(StudentRepository));
@@ -64,7 +75,7 @@ namespace VivaTest.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

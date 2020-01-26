@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VivaTest.Web.Core.UOW;
 using VivaTest.Web.Entities;
@@ -9,6 +10,7 @@ using VivaTest.Web.Service;
 
 namespace VivaTest.Web.Controllers
 {
+    [Authorize]
     public class StudentController : Controller
     {
         private readonly StudentService _studentService;

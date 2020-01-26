@@ -12943,11 +12943,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Study\\Core\\devskill\\Viva Practice\\VivaTest\\VivaTest.Web\\VivaTest.Web.csproj",
+      "projectUniqueName": "F:\\Study\\Core\\devskill\\Viva Practice\\design_Pattern_crud\\VivaTest\\VivaTest.Web\\VivaTest.Web.csproj",
       "projectName": "VivaTest.Web",
-      "projectPath": "F:\\Study\\Core\\devskill\\Viva Practice\\VivaTest\\VivaTest.Web\\VivaTest.Web.csproj",
+      "projectPath": "F:\\Study\\Core\\devskill\\Viva Practice\\design_Pattern_crud\\VivaTest\\VivaTest.Web\\VivaTest.Web.csproj",
       "packagesPath": "C:\\Users\\Hasan\\.nuget\\packages\\",
-      "outputPath": "F:\\Study\\Core\\devskill\\Viva Practice\\VivaTest\\VivaTest.Web\\obj\\",
+      "outputPath": "F:\\Study\\Core\\devskill\\Viva Practice\\design_Pattern_crud\\VivaTest\\VivaTest.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

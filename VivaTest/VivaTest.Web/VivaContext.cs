@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using VivaTest.Web.Entities;
 
 namespace VivaTest.Web
 {
-    public class VivaContext : DbContext
+    public class VivaContext : IdentityDbContext
     {
         public VivaContext(DbContextOptions option) : base(option)
         {
